@@ -18,5 +18,5 @@
 #warning "no supported build"
 #endif
 
-
+extern "C" API_TYPE void printGreeting(void);
 #endif
