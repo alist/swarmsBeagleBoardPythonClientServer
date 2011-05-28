@@ -1,0 +1,86 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 42;
+	objects = {
+
+/* Begin PBXFileReference section */
+		68D9C50D139961E100879BD2 /* driveLib.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = driveLib.cpp; sourceTree = "<group>"; };
+		68D9C50E139961E200879BD2 /* driveLib.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = driveLib.h; sourceTree = "<group>"; };
+		68D9C50F139961FC00879BD2 /* motorController.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = motorController.cpp; sourceTree = "<group>"; };
+		68D9C510139961FD00879BD2 /* motorController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = motorController.h; sourceTree = "<group>"; };
+		68D9C511139961FD00879BD2 /* utility.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = utility.h; sourceTree = "<group>"; };
+		68D9C512139961FD00879BD2 /* utility.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = utility.cpp; sourceTree = "<group>"; };
+		68D9C547139972B300879BD2 /* pyDriveLink.py */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.python; path = pyDriveLink.py; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXGroup section */
+		68D9C4F5139961B000879BD2 = {
+			isa = PBXGroup;
+			children = (
+				68D9C547139972B300879BD2 /* pyDriveLink.py */,
+				68D9C50D139961E100879BD2 /* driveLib.cpp */,
+				68D9C50E139961E200879BD2 /* driveLib.h */,
+				68D9C50F139961FC00879BD2 /* motorController.cpp */,
+				68D9C510139961FD00879BD2 /* motorController.h */,
+				68D9C511139961FD00879BD2 /* utility.h */,
+				68D9C512139961FD00879BD2 /* utility.cpp */,
+			);
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXProject section */
+		68D9C4F7139961B000879BD2 /* Project object */ = {
+			isa = PBXProject;
+			buildConfigurationList = 68D9C4FA139961B000879BD2 /* Build configuration list for PBXProject "drivePyProj" */;
+			compatibilityVersion = "Xcode 2.4";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				English,
+				Japanese,
+				French,
+				German,
+			);
+			mainGroup = 68D9C4F5139961B000879BD2;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+			);
+		};
+/* End PBXProject section */
+
+/* Begin XCBuildConfiguration section */
+		68D9C4F8139961B000879BD2 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				COPY_PHASE_STRIP = NO;
+			};
+			name = Debug;
+		};
+		68D9C4F9139961B000879BD2 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				COPY_PHASE_STRIP = YES;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		68D9C4FA139961B000879BD2 /* Build configuration list for PBXProject "drivePyProj" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				68D9C4F8139961B000879BD2 /* Debug */,
+				68D9C4F9139961B000879BD2 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 68D9C4F7139961B000879BD2 /* Project object */;
+}

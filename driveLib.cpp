@@ -1,23 +1,64 @@
 #include <iostream>
 #include "driveLib.h"
 
-
+static MotorController * rcDriveController;
 
 extern "C" API_TYPE bool initializeDriveControl(void){
 	
-	MotorController controller;
-    controller.open();
+	rcDriveController = new MotorController;
 	
-	runSimpleMotorAction(controller);	
+	rcDriveController->open();
+		
+	return true;
+}
+
+
+extern "C" API_TYPE bool testDriveControlSteering(void){
+	if (rcDriveController == NULL){
+		cout << "rcDriveController is not initialized or open \n";
+		
+		return false;
+	}
+	runSimpleSteerTestAction(*rcDriveController);	
 	
-	controller.close();
+	return true;
+}
+
+extern "C" API_TYPE bool teardownDriveControl(void){
+	rcDriveController->close();
+	delete rcDriveController;
+	rcDriveController = NULL;
 	
 	return true;
 }
 
 
+extern "C" API_TYPE bool setDriveControlDirection(int direction){
+	if (rcDriveController == NULL){
+		cout << "rcDriveController is not initialized or open \n";
+		
+		return false;
+	}
+	
+	rcDriveController->setDirection(direction);
+	
+	return true;
+	
+}
+extern "C" API_TYPE bool setDriveControlSpeed(int speed){	
+	if (rcDriveController == NULL){
+		cout << "rcDriveController is not initialized or open \n";
+		
+		return false;
+	}
+	
+	rcDriveController->setSpeed(speed);
+	
+	return true;
+}
 
-void runSimpleMotorAction(MotorController controller){	
+
+void runSimpleSteerTestAction(MotorController controller){	
 	int issuedCommandsCount = 0;
 	
 		int i = 0;
@@ -26,7 +67,7 @@ void runSimpleMotorAction(MotorController controller){
 			if (i % 2 == 0){
 				controller.toggleLed1();	
 				issuedCommandsCount ++;
-			}else if (i % 5 == 0){
+			}else if (i % 3 == 0){
 				controller.toggleLed2();
 				issuedCommandsCount ++;
 				int direction = i -100;
@@ -35,7 +76,7 @@ void runSimpleMotorAction(MotorController controller){
 			}
 			printf("issued [%i] commands \n",issuedCommandsCount);
 			
-			usleep(1000 * 200); //microseconds * 1000 = miliseconds * 100 =  .1 seconds
+			usleep(1000 * 150); //microseconds * 1000 = miliseconds * 150 =  .15 seconds
 			i ++;	
 		}
 }
