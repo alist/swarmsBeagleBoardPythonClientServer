@@ -1,3 +1,7 @@
+#include <stdlib.h>
+#include <time.h>
+#include <stdio.h>
+
 #define BUILD_DLL
 
 #ifndef DRIVELIB
@@ -18,5 +22,7 @@
 #warning "no supported build"
 #endif
 
+
+int getWebBeansInt(int max);
 extern "C" API_TYPE void printGreeting(void);
 #endif
