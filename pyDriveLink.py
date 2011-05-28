@@ -7,3 +7,14 @@ def printGreeting():
 	return _foo.printGreeting();
 
 printGreeting();
+
+print('Testing USB lib');
+
+_foo.initializeDriveControl.argtypes = None
+_foo.initializeDriveControl.restype = C.c_bool
+
+def initializeDriveControl():
+	return _foo.initializeDriveControl();
+
+initializeDriveControl();
+
