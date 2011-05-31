@@ -294,7 +294,7 @@
 							<real>185</real>
 						</array>
 						<key>RubberWindowFrame</key>
-						<string>197 54 1243 823 0 0 1440 878 </string>
+						<string>197 55 1243 823 0 0 1440 878 </string>
 					</dict>
 					<key>Module</key>
 					<string>PBXSmartGroupTreeModule</string>
@@ -304,56 +304,6 @@
 				<dict>
 					<key>Dock</key>
 					<array>
-						<dict>
-							<key>ContentConfiguration</key>
-							<dict>
-								<key>PBXProjectModuleGUID</key>
-								<string>68D9C4FF139961B300879BD2</string>
-								<key>PBXProjectModuleLabel</key>
-								<string>driveLib.h</string>
-								<key>PBXSplitModuleInNavigatorKey</key>
-								<dict>
-									<key>Split0</key>
-									<dict>
-										<key>PBXProjectModuleGUID</key>
-										<string>68D9C500139961B300879BD2</string>
-										<key>PBXProjectModuleLabel</key>
-										<string>driveLib.h</string>
-										<key>_historyCapacity</key>
-										<integer>0</integer>
-										<key>bookmark</key>
-										<string>68D9C56713997CD600879BD2</string>
-										<key>history</key>
-										<array>
-											<string>68D9C5481399779100879BD2</string>
-											<string>68D9C5491399779100879BD2</string>
-											<string>68D9C54B1399779100879BD2</string>
-											<string>68D9C54C1399779100879BD2</string>
-											<string>68D9C54D1399779100879BD2</string>
-											<string>68D9C54E1399779100879BD2</string>
-											<string>68D9C54F1399779100879BD2</string>
-										</array>
-									</dict>
-									<key>SplitCount</key>
-									<string>1</string>
-								</dict>
-								<key>StatusBarVisibility</key>
-								<true/>
-								<key>XCSharingToken</key>
-								<string>com.apple.Xcode.CommonNavigatorGroupSharingToken</string>
-							</dict>
-							<key>GeometryConfiguration</key>
-							<dict>
-								<key>Frame</key>
-								<string>{{0, 0}, {1036, 329}}</string>
-								<key>RubberWindowFrame</key>
-								<string>197 54 1243 823 0 0 1440 878 </string>
-							</dict>
-							<key>Module</key>
-							<string>PBXNavigatorGroup</string>
-							<key>Proportion</key>
-							<string>329pt</string>
-						</dict>
 						<dict>
 							<key>BecomeActive</key>
 							<true/>
@@ -374,7 +324,7 @@
 										<key>_historyCapacity</key>
 										<integer>0</integer>
 										<key>bookmark</key>
-										<string>68D9C56813997CD600879BD2</string>
+										<string>682C403A139D7C9900E206D3</string>
 										<key>history</key>
 										<array>
 											<string>68D9C5481399779100879BD2</string>
@@ -383,7 +333,7 @@
 											<string>68D9C54D1399779100879BD2</string>
 											<string>68D9C54E1399779100879BD2</string>
 											<string>68D9C552139977DE00879BD2</string>
-											<string>68D9C553139977DE00879BD2</string>
+											<string>68D9C56A1399813700879BD2</string>
 										</array>
 									</dict>
 									<key>SplitCount</key>
@@ -397,18 +347,18 @@
 							<key>GeometryConfiguration</key>
 							<dict>
 								<key>Frame</key>
-								<string>{{0, 334}, {1036, 329}}</string>
+								<string>{{0, 0}, {1036, 660}}</string>
 								<key>RubberWindowFrame</key>
-								<string>197 54 1243 823 0 0 1440 878 </string>
+								<string>197 55 1243 823 0 0 1440 878 </string>
 							</dict>
 							<key>Module</key>
 							<string>PBXNavigatorGroup</string>
 							<key>Proportion</key>
-							<string>329pt</string>
+							<string>660pt</string>
 						</dict>
 						<dict>
 							<key>Proportion</key>
-							<string>114pt</string>
+							<string>117pt</string>
 							<key>Tabs</key>
 							<array>
 								<dict>
@@ -422,9 +372,9 @@
 									<key>GeometryConfiguration</key>
 									<dict>
 										<key>Frame</key>
-										<string>{{10, 27}, {1036, 87}}</string>
+										<string>{{10, 27}, {1036, 90}}</string>
 										<key>RubberWindowFrame</key>
-										<string>197 54 1243 823 0 0 1440 878 </string>
+										<string>197 55 1243 823 0 0 1440 878 </string>
 									</dict>
 									<key>Module</key>
 									<string>XCDetailModule</string>
@@ -498,7 +448,6 @@
 				<string>PBXSmartGroupTreeModule</string>
 				<string>XCModuleDock</string>
 				<string>PBXNavigatorGroup</string>
-				<string>PBXNavigatorGroup</string>
 				<string>XCDockableTabModule</string>
 				<string>XCDetailModule</string>
 				<string>PBXProjectFindModule</string>
@@ -507,12 +456,11 @@
 			</array>
 			<key>TableOfContents</key>
 			<array>
-				<string>68D9C50A139961C700879BD2</string>
+				<string>682C3FFC139D6EED00E206D3</string>
 				<string>1CA23ED40692098700951B8B</string>
-				<string>68D9C50B139961C700879BD2</string>
+				<string>682C3FFD139D6EED00E206D3</string>
 				<string>68D9C4FF139961B300879BD2</string>
-				<string>68D9C4FF139961B300879BD2</string>
-				<string>68D9C50C139961C700879BD2</string>
+				<string>682C3FFE139D6EED00E206D3</string>
 				<string>1CA23EDF0692099D00951B8B</string>
 				<string>1CA23EE00692099D00951B8B</string>
 				<string>1CA23EE10692099D00951B8B</string>
@@ -685,7 +633,7 @@
 		<string>/Volumes/swarms beagle/home/root/alex/drivePy/drivePyProj.xcodeproj</string>
 	</array>
 	<key>WindowString</key>
-	<string>197 54 1243 823 0 0 1440 878 </string>
+	<string>197 55 1243 823 0 0 1440 878 </string>
 	<key>WindowToolsV3</key>
 	<array>
 		<dict>

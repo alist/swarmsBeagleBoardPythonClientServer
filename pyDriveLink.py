@@ -44,19 +44,58 @@ def fibSteerList(minInt,maxInt):
 	return steerList;
 
 def runSteerPlot(plot):
-	for dir in steerPlot:
+	for dir in plot:
 		print ('dir: ', dir);
 		setDriveControlDirection(dir);
 		time.sleep(.1)
 
 
-initializeDriveControl();
-steerPlot = fibSteerList(-100, 100);
-runSteerPlot(steerPlot);
-steerPlot2 = fibSteerList(0,100);
-runSteerPlot(steerPlot2);
-steerPlot.reverse();
-runSteerPlot(steerPlot);
 
-teardownDriveControl();
+def testRunDrive():
+	initializeDriveControl();
+	steerPlot = fibSteerList(-100, 100);
+	runSteerPlot(steerPlot);
+	steerPlot2 = fibSteerList(0,100);
+	runSteerPlot(steerPlot2);
+	steerPlot.reverse();
+	runSteerPlot(steerPlot);
+	teardownDriveControl();
+	
 
+import socket
+import threading
+import SocketServer
+
+class MyTCPHandler(SocketServer.BaseRequestHandler):
+    """
+    The RequestHandler class for our server.
+
+    It is instantiated once per connection to the server, and must
+    override the handle() method to implement communication to the
+    client.
+    """
+
+    def handle(self):
+        # self.request is the TCP socket connected to the client
+        self.data = self.request.recv(1024).strip()
+        print "%s wrote:" % self.client_address[0]
+        print self.data;        # just send back the same data, but upper-cased
+        self.request.send(self.data.upper())
+	if self.data == "drive":
+		print ('test driveMODE')
+		testRunDrive();
+
+import commands
+CURRENTIP = commands.getoutput("ifconfig").split("\n")[1].split()[1][5:]
+
+HOST, PORT = "192.168.1.100", 7337
+if CURRENTIP == HOST:
+
+	# Create the server, binding to localhost on port 9999
+	server = SocketServer.TCPServer((HOST, PORT), MyTCPHandler)
+
+	# Activate the server; this will keep running until you
+	# interrupt the program with Ctrl-C
+	server.serve_forever()
+else:
+	print ('Server is not associated with default address: ',HOST,' but instead: ',CURRENTIP);
