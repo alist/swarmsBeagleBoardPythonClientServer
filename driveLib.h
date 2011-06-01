@@ -1,8 +1,12 @@
-#define API_TYPE
+#define BUILD_DLL
 
 #ifndef DRIVELIB
 #define DRIVELIB
-#endif
+
+
+#if defined (__GNUC__) 
+  #define API_TYPE __attribute__ ((__visibility__("default")))
+#elif defined (WIN32)
 
 #ifdef BUILD_DLL
 #define API_TYPE __declspec(dllexport)
@@ -10,4 +14,9 @@
 #define API_TYPE __declspec(dllimport)
 #endif
 
-extern "C" API_TYPE void printGreeting();
+#else
+#warning "no supported build"
+#endif
+
+
+#endif
