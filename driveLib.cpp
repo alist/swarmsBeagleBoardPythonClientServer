@@ -3,6 +3,14 @@
 
 static MotorController * rcDriveController;
 
+
+extern "C" API_TYPE bool remoteVehicleIsConnected(void){
+	if (rcDriveController == NULL)
+		return false;
+	
+	return rcDriveController->isOpen();
+}
+
 extern "C" API_TYPE bool initializeDriveControl(void){
 	
 	rcDriveController = new MotorController;
