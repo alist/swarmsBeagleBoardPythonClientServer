@@ -1,0 +1,21 @@
+socket drive control specification:
+
+commands parsed in fifo manner 
+
+commands include a verb and a parameter:
+
+Commands sent by the client in a single packet look like:
+steer -75; drive 30;
+
+commands include:
+steer [-100-100];
+drive [-100-100];
+stop; --resets motors to 0, clears command buffer (doesn't get added to command stack in fifo paradigm)
+
+command responses from the server appear in the following ways:
+did steer 100; did drive -100; did stop;
+
+additionally, errors or messages may come from the server at any time:
+
+error "drive: could not contact drive subsystem";
+warning "latency: command stack is far behind real-time";

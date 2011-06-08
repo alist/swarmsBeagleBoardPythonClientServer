@@ -78,10 +78,10 @@ class MyTCPHandler(SocketServer.BaseRequestHandler):
     def handle(self):
         # self.request is the TCP socket connected to the client
         self.data = self.request.recv(1024).strip()
-        print "%s wrote:" % self.client_address[0]
+	print "%s wrote:" % self.client_address[0]
         print self.data;        # just send back the same data, but upper-cased
         self.request.send(self.data.upper())
-	if self.data == "drive":
+	if self.data == "driveTest;":
 		print ('test driveMODE')
 		testRunDrive();
 
@@ -91,7 +91,7 @@ CURRENTIP = commands.getoutput("ifconfig").split("\n")[1].split()[1][5:]
 HOST, PORT = "192.168.1.100", 7337
 if CURRENTIP == HOST:
 
-	# Create the server, binding to localhost on port 9999
+	# if an outside host isn't used, eg not localhost, then the port is not opened to the outside world	
 	server = SocketServer.TCPServer((HOST, PORT), MyTCPHandler)
 
 	# Activate the server; this will keep running until you
