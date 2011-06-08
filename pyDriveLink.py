@@ -9,6 +9,11 @@ def printGreeting():
 
 printGreeting();
 
+_foo.remoteVehicleIsConnected.argtypes = None
+_foo.remoteVehicleIsConnected.restype = C.c_bool
+def remoteVehicleIsConnected():
+	return _foo.remoteVehicleIsConnected();
+
 _foo.initializeDriveControl.argtypes = None
 _foo.initializeDriveControl.restype = C.c_bool
 def initializeDriveControl():
@@ -35,6 +40,7 @@ _foo.testDriveControlSteering.restype = C.c_bool
 def testDriveControlSteering():
 	return _foo.testDriveControlSteering();
 	
+	
 def fibSteerList(minInt,maxInt):
 	steerList	= [];
 	a, b		= 0, 1;
@@ -52,16 +58,64 @@ def runSteerPlot(plot):
 
 
 def testRunDrive():
-	initializeDriveControl();
 	steerPlot = fibSteerList(-100, 100);
 	runSteerPlot(steerPlot);
 	steerPlot2 = fibSteerList(0,100);
 	runSteerPlot(steerPlot2);
 	steerPlot.reverse();
 	runSteerPlot(steerPlot);
-	teardownDriveControl();
-	
 
+
+def handleRemoteClientCommmand(command, argument):
+	if command == None: return
+	
+	if command == "stop":
+		if remoteVehicleIsConnected() == False:
+			return "error %(c)s: remote vehicle not connected;" %{"c" : command}
+
+		setDriveControlSpeed(0);
+		teardownDriveControl();
+	elif command == "start":
+		initializeDriveControl();
+	elif command == "steer":
+		if remoteVehicleIsConnected() == False:
+			return "error %(c)s: remote vehicle not connected;" %{"c" : command}
+		
+		if argument == None:
+			return;
+		else:
+			direction = int(argument);
+			if abs(direction) < 100:
+				setDriveControlDirection(direction);
+			else:
+				return "error steer: value out of bounds;"
+	elif command == "drive":
+		if remoteVehicleIsConnected() == False:
+			return "error %(c)s: remote vehicle not connected;" %{"c" : command}
+	
+		if argument == None:
+			return;
+		else:
+			speed = int(argument);
+			if abs(speed) < 100:
+				setDriveControlSpeed(speed);
+			else:
+				return "error drive: value out of bounds;"
+	elif command == "test":
+		if remoteVehicleIsConnected() == False:
+			return "error %(c)s: remote vehicle not connected;" %{"c" : command}
+		
+		testRunDrive();
+	elif command == "pause":
+		time.sleep(.1);
+	else:
+		error = "error '%(c)s': unknown command '%(c)s' issued with argument '%(a)s';" %{"c" : command, "a" : argument }
+		print error;
+		return error;
+	
+	return "did %(c)s %(a)s;" %{"c" : command, "a" : argument }
+
+		
 import socket
 import threading
 import SocketServer
@@ -78,12 +132,21 @@ class MyTCPHandler(SocketServer.BaseRequestHandler):
     def handle(self):
         # self.request is the TCP socket connected to the client
         self.data = self.request.recv(1024).strip()
-	print "%s wrote:" % self.client_address[0]
-        print self.data;        # just send back the same data, but upper-cased
-        self.request.send(self.data.upper())
-	if self.data == "driveTest;":
-		print ('test driveMODE')
-		testRunDrive();
+        print "socket input:", self.data;        # just send back the same data, but upper-cased
+	commands = self.data.split(';');
+	returnString = "";
+	for command in commands:
+		parts		= command.split();
+		if len(parts) == 0:
+			break
+		command		= parts[0];
+		argument	= '';
+		if len(parts) > 1:
+			argument	= parts[1];
+		clientRet = handleRemoteClientCommmand(command, argument);
+		returnString = returnString + clientRet;
+#	print "%s wrote:" % self.client_address[0]
+	self.request.send(returnString);
 
 import commands
 CURRENTIP = commands.getoutput("ifconfig").split("\n")[1].split()[1][5:]
@@ -96,6 +159,7 @@ if CURRENTIP == HOST:
 
 	# Activate the server; this will keep running until you
 	# interrupt the program with Ctrl-C
+	print ('Server is serving forever at: ',HOST,':',PORT);
 	server.serve_forever()
 else:
 	print ('Server is not associated with default address: ',HOST,' but instead: ',CURRENTIP);

@@ -121,6 +121,13 @@ void MotorController::open() {
     
 }
 
+bool MotorController::isOpen(){
+	if (usbDeviceHandle == NULL)
+		return false;
+	
+	return true;
+}
+
 void MotorController::close() {
     usb_close(usbDeviceHandle);    
 }

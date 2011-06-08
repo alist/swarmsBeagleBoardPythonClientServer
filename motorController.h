@@ -27,6 +27,8 @@ public:
     void reset();
     void open();
     void close();
+    bool isOpen();
+
 
     void toggleLed2();
     void toggleLed1();

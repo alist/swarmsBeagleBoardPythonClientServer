@@ -28,6 +28,8 @@ extern "C" API_TYPE bool initializeDriveControl(void);
 extern "C" API_TYPE bool setDriveControlDirection(int direction);
 extern "C" API_TYPE bool setDriveControlSpeed(int speed);
 extern "C" API_TYPE bool teardownDriveControl(void);
+extern "C" API_TYPE bool remoteVehicleIsConnected(void);
+
 extern "C" API_TYPE bool testDriveControlSteering(void);
 //test
 void runSimpleSteerTestAction(MotorController controller);
