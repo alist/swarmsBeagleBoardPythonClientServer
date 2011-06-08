@@ -11,9 +11,11 @@ commands include:
 steer [-100-100];
 drive [-100-100];
 stop; --resets motors to 0, clears command buffer (doesn't get added to command stack in fifo paradigm)
+pause; -- short .1 second pause, appropiate for spacing motor commands
 
 command responses from the server appear in the following ways:
-did steer 100; did drive -100; did stop;
+did steer 100 ; did drive -100; did stop;
+any amount of white space may appear between any token or argument
 
 additionally, errors or messages may come from the server at any time:
 
