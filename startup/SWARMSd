@@ -1,0 +1,33 @@
+#!/bin/sh
+#
+# Start/stop the SWARMS daemons
+#
+
+set -e
+
+case "$1" in
+  start) 
+        echo -n "Starting SWARMSd: " 
+        start-stop-daemon -S -b -n SWARMSd -a /home/root/alex/drivePy/startup/startupScript.sh
+        echo "done" 
+        ;; 
+  stop) 
+        echo -n "Stopping SWARMSd: " 
+ 	killall python
+	echo 0 > /sys/class/leds/beagleboard\:\:usr1/brightness
+	#start-stop-daemon -K -n SWARMSd 
+        echo "done" 
+        ;; 
+  restart) 
+        $0 stop 
+        $0 start 
+        ;; 
+  *) 
+        echo "Usage: SWARMSInit { start | stop | restart }" >&2 
+        exit 1 
+        ;; 
+esac 
+ 
+exit 0
+
+

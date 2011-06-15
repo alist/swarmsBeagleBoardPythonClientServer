@@ -10,16 +10,24 @@ inputEventSize = 16
 
 #out = open("/home/root/user-button.txt", "w")
 
+didStart = False
+#light means we're ready!
+os.system("echo 1 > /sys/class/leds/beagleboard\:\:usr1/brightness")
 print "waiting for user button for SWARMSbb initialization"
 file = open(inputDevice, "rb") # standard binary file input
 event = file.read(inputEventSize)
 while event:
   (time1, time2, type, code, value) = struct.unpack(inputEventFormat, event)
-  if value == 1:
+  if value == 1 and didStart == False:
+	os.system("echo 0 > /sys/class/leds/beagleboard\:\:usr1/brightness")
 	print "user setup button pressed!"
 	os.system("cd /home/root/alex/drivePy/startup/")
 	os.system("./netConfig.sh")
 	time.sleep(.5) 
 	os.system("/home/root/alex/drivePy/launchDrivePy.sh")
+	didStart = True
+  elif value == 1 and didStart == True:
+	os.system("/home/root/alex/drivePy/startup/SWARMSd stop")
+	didStart = False
   event = file.read(inputEventSize)
 file.close()
