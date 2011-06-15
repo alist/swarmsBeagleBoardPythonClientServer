@@ -2,6 +2,9 @@ import time
 import numpy as N
 import ctypes as C
 import os
+
+os.system("/home/root/alex/drivePy/startup/netConfig.sh")
+
 _foo = N.ctypeslib.load_library('libDrive', '.')
 _foo.printGreeting.argtypes = None
 _foo.printGreeting.restype = C.c_void_p
