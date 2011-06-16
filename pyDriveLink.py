@@ -89,7 +89,7 @@ def handleRemoteClientCommmand(command, argument):
 			return;
 		else:
 			direction = int(argument);
-			if abs(direction) < 100:
+			if abs(direction) <= 100:
 				setDriveControlDirection(direction);
 			else:
 				return "error steer: value out of bounds;"
@@ -111,7 +111,7 @@ def handleRemoteClientCommmand(command, argument):
 		
 		testRunDrive();
 	elif command == "pause":
-		time.sleep(.1);
+		time.sleep(.05);
 	else:
 		error = "error '%(c)s': unknown command '%(c)s' issued with argument '%(a)s';" %{"c" : command, "a" : argument }
 		print error;

@@ -2,6 +2,9 @@
 #
 # Start/stop the SWARMS daemons
 #
+# This file is linked in the Beagleboards /etc/init.d folder
+# Also, it is linked from init.d, in etc/rc0.d for termination, rc3.d for startup, and rc5.d for normal os running 
+
 
 set -e
 
@@ -14,8 +17,8 @@ case "$1" in
   stop) 
         echo -n "Stopping SWARMSd: " 
 	echo 0 > /sys/class/leds/beagleboard\:\:usr1/brightness
-	start-stop-daemon -K -n SWARMSd 
  	killall python
+	start-stop-daemon -K -n SWARMSd 
         echo "done" 
         ;; 
   restart) 
