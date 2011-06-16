@@ -101,7 +101,7 @@ def handleRemoteClientCommmand(command, argument):
 			return;
 		else:
 			speed = int(argument);
-			if abs(speed) < 100:
+			if abs(speed) <= 100:
 				setDriveControlSpeed(speed);
 			else:
 				return "error drive: value out of bounds;"
