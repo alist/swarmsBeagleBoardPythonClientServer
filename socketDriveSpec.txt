@@ -10,6 +10,7 @@ steer -75; drive 30;
 commands include:
 steer [-100-100];
 drive [-100-100];
+start; -- initallizes connection between drive controller, and control subsystem; required before other commands;
 stop; --resets motors to 0, clears command buffer (doesn't get added to command stack in fifo paradigm)
 pause; -- short .1 second pause, appropiate for spacing motor commands
 
