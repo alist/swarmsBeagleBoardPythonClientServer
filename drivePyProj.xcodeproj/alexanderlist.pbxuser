@@ -30,36 +30,6 @@
 		vrLen = 947;
 		vrLoc = 0;
 	};
-	68B7648713A028BE00EAA352 /* PBXTextBookmark */ = {
-		isa = PBXTextBookmark;
-		fRef = 68D9C50D139961E100879BD2 /* driveLib.cpp */;
-		name = "driveLib.cpp: 8";
-		rLen = 0;
-		rLoc = 177;
-		rType = 0;
-		vrLen = 942;
-		vrLoc = 0;
-	};
-	68B7648813A028BE00EAA352 /* PBXTextBookmark */ = {
-		isa = PBXTextBookmark;
-		fRef = 68D9C547139972B300879BD2 /* pyDriveLink.py */;
-		name = "pyDriveLink.py: 15";
-		rLen = 0;
-		rLoc = 398;
-		rType = 0;
-		vrLen = 1280;
-		vrLoc = 290;
-	};
-	68B7648C13A02B8100EAA352 /* PBXTextBookmark */ = {
-		isa = PBXTextBookmark;
-		fRef = 68D9C547139972B300879BD2 /* pyDriveLink.py */;
-		name = "pyDriveLink.py: 147";
-		rLen = 0;
-		rLoc = 4046;
-		rType = 0;
-		vrLen = 1347;
-		vrLoc = 2915;
-	};
 	68D9C4F7139961B000879BD2 /* Project object */ = {
 		activeBuildConfigurationName = Debug;
 		addToTargets = (
@@ -94,14 +64,11 @@
 			PBXWorkspaceStateSaveDate = 329264097;
 		};
 		perUserProjectItems = {
-			68B7647F13A0271D00EAA352 = 68B7647F13A0271D00EAA352 /* PBXTextBookmark */;
-			68B7648313A027D400EAA352 = 68B7648313A027D400EAA352 /* PBXTextBookmark */;
-			68B7648413A027D400EAA352 = 68B7648413A027D400EAA352 /* PBXTextBookmark */;
-			68B7648713A028BE00EAA352 = 68B7648713A028BE00EAA352 /* PBXTextBookmark */;
-			68B7648813A028BE00EAA352 = 68B7648813A028BE00EAA352 /* PBXTextBookmark */;
-			68B7648C13A02B8100EAA352 = 68B7648C13A02B8100EAA352 /* PBXTextBookmark */;
-			68D9C5481399779100879BD2 = 68D9C5481399779100879BD2 /* PBXTextBookmark */;
-			68D9C5491399779100879BD2 = 68D9C5491399779100879BD2 /* PBXTextBookmark */;
+			68B7647F13A0271D00EAA352 /* PBXTextBookmark */ = 68B7647F13A0271D00EAA352 /* PBXTextBookmark */;
+			68B7648313A027D400EAA352 /* PBXTextBookmark */ = 68B7648313A027D400EAA352 /* PBXTextBookmark */;
+			68B7648413A027D400EAA352 /* PBXTextBookmark */ = 68B7648413A027D400EAA352 /* PBXTextBookmark */;
+			68D9C5481399779100879BD2 /* PBXTextBookmark */ = 68D9C5481399779100879BD2 /* PBXTextBookmark */;
+			68D9C5491399779100879BD2 /* PBXTextBookmark */ = 68D9C5491399779100879BD2 /* PBXTextBookmark */;
 		};
 		sourceControlManager = 68D9C4FB139961B000879BD2 /* Source Control */;
 		userBuildSettings = {
@@ -158,9 +125,9 @@
 	};
 	68D9C547139972B300879BD2 /* pyDriveLink.py */ = {
 		uiCtxt = {
-			sepNavIntBoundsRect = "{{0, 0}, {1182, 2262}}";
-			sepNavSelRange = "{2820, 0}";
-			sepNavVisRange = "{2117, 493}";
+			sepNavIntBoundsRect = "{{0, 0}, {975, 2288}}";
+			sepNavSelRange = "{2374, 0}";
+			sepNavVisRange = "{1846, 1365}";
 		};
 	};
 	68D9C5481399779100879BD2 /* PBXTextBookmark */ = {
