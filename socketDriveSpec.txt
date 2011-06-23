@@ -12,7 +12,7 @@ steer [-100-100];
 drive [-100-100];
 start; -- initallizes connection between drive controller, and control subsystem; required before other commands;
 stop; --resets motors to 0, clears command buffer (doesn't get added to command stack in fifo paradigm)
-pause; -- short .1 second pause, appropiate for spacing motor commands
+pause; -- short .05 second pause, appropiate for spacing motor commands
 
 command responses from the server appear in the following ways:
 did steer 100 ; did drive -100; did stop;

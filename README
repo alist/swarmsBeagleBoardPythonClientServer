@@ -8,12 +8,37 @@ All the code is here, but you'll need to compile the lib with libMake.sh
 You'll also need python; pyDriveLink.py is the code which will set the following states on control:
 IP Address 192.168.1.100 port 7337 -- always need a way to remember, huh?
 
+The BeagleBoard's host network is currently: 'EmbeddedControl' with password: BeagleBoardBeagleBoard*123
+
 The client code also exists, and can be found as pyClient.py in this root folder; notice that sending commands from client to server is trivial and requires only socket connections. These sockets are closed after the server replies to a command. 
 See socketDriveSpec.txt for the spec which is used to communicate with your beagleBoard server from the client.
 
 To get SWARMS to run at boot, the startup/SWARMSd file is referenced in boot directories... Use vim on SWARMSd to find out where for the angstrom distribution. 
 
 The password for SSH on the beagleBoard at the DFL <lab> is SWARMSbb
+The username is root
+
+Related projects:
+https://github.com/alist/iOSSwarmsBeagleBoardClient 	is a beagle client program that runs on the iPhone/iPod(?) to drive the RC Car over wifi; it contains portable code for new Cocoa projects
+https://github.com/alist/OpenSWARMS 			Contains the code for the SWARMS controller and the OBSC controller. It contains a Documentation directory that shows much about the hirarchy
+							>of control for the SWARMS system, and how to implement new SWARMS controllers, or recreate the entire system for additional robots.
+
+TroubleShooting:
+Be sure that all components are plugged in:
+	The OBSC system's PWM cable is Arrow-to-Arrow with the rc car's drive motor controller; the drive motor controller is ON (with green LED)
+	The rc Car's servo motor is plugged in the same orientation as the drive motors pwm cable.
+	The TTL line from the SWARMS Controller is plugged into the OBSC system
+	The SWARMS controller's USB connection is plugged into a hub wherin the Beagle Board is the host
+Be sure that the network is active:
+	If the USR1 LED on the BeagleBoard is not lit, be sure that the BB is connected to a LAN network where it can have its ideal IP address and port
+	Press the reset button, and eventually the swarms server process (as pyDriveLink.py script) runs and initializes the server and relights the USR1 led
+If network commands like 'pause' work, but those like 'drive or steer' don't:
+	If the lights on the SWARMS board stop flashing:
+		Reset the SWARMS board; perhaps need to reset Beagle Board
+	If the network socket inexplicably fails:
+		Reset the Beagle and the SWARMS board
+	If the PRG button on the SWARMS controller does not turn the RC Car's wheels to one slightly-offset location:
+		Try reseting the SWARMS controller, and reseting the drive-motor controller on the RC car to reset the OBSC system
 
 LICENSE:
 This code is hereby licensed under the MIT License @ http://www.opensource.org/licenses/mit-license.php
