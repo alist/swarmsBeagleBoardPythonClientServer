@@ -1,5 +1,6 @@
 #!/bin/bash
 #sets up network for use on swarms beagle platform
+#called in ../pyDriveLink.py
 
 idealNetIp='192.168.1.100'
 

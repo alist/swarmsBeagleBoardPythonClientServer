@@ -1,6 +1,10 @@
 import time 
 import numpy as N
 import ctypes as C
+import os
+
+os.system("/home/root/alex/drivePy/startup/netConfig.sh")
+
 _foo = N.ctypeslib.load_library('libDrive', '.')
 _foo.printGreeting.argtypes = None
 _foo.printGreeting.restype = C.c_void_p
@@ -85,7 +89,7 @@ def handleRemoteClientCommmand(command, argument):
 			return;
 		else:
 			direction = int(argument);
-			if abs(direction) < 100:
+			if abs(direction) <= 100:
 				setDriveControlDirection(direction);
 			else:
 				return "error steer: value out of bounds;"
@@ -97,7 +101,7 @@ def handleRemoteClientCommmand(command, argument):
 			return;
 		else:
 			speed = int(argument);
-			if abs(speed) < 100:
+			if abs(speed) <= 100:
 				setDriveControlSpeed(speed);
 			else:
 				return "error drive: value out of bounds;"
@@ -107,7 +111,7 @@ def handleRemoteClientCommmand(command, argument):
 		
 		testRunDrive();
 	elif command == "pause":
-		time.sleep(.1);
+		time.sleep(.05);
 	else:
 		error = "error '%(c)s': unknown command '%(c)s' issued with argument '%(a)s';" %{"c" : command, "a" : argument }
 		print error;
@@ -135,6 +139,7 @@ class MyTCPHandler(SocketServer.BaseRequestHandler):
         print "socket input:", self.data;        # just send back the same data, but upper-cased
 	commands = self.data.split(';');
 	returnString = "";
+	os.system("echo 0 > /sys/class/leds/beagleboard\:\:usr1/brightness")
 	for command in commands:
 		parts		= command.split();
 		if len(parts) == 0:
@@ -147,19 +152,23 @@ class MyTCPHandler(SocketServer.BaseRequestHandler):
 		returnString = returnString + clientRet;
 #	print "%s wrote:" % self.client_address[0]
 	self.request.send(returnString);
+	os.system("echo 1 > /sys/class/leds/beagleboard\:\:usr1/brightness")
 
 import commands
 CURRENTIP = commands.getoutput("ifconfig").split("\n")[1].split()[1][5:]
 
 HOST, PORT = "192.168.1.100", 7337
 if CURRENTIP == HOST:
-
+	os.system("echo 0 > /sys/class/leds/beagleboard\:\:usr1/brightness")
 	# if an outside host isn't used, eg not localhost, then the port is not opened to the outside world	
 	server = SocketServer.TCPServer((HOST, PORT), MyTCPHandler)
 
 	# Activate the server; this will keep running until you
 	# interrupt the program with Ctrl-C
 	print ('Server is serving forever at: ',HOST,':',PORT);
+	os.system("echo 1 > /sys/class/leds/beagleboard\:\:usr1/brightness")
 	server.serve_forever()
 else:
 	print ('Server is not associated with default address: ',HOST,' but instead: ',CURRENTIP);
+	os.system("echo 0 > /sys/class/leds/beagleboard\:\:usr1/brightness")
+

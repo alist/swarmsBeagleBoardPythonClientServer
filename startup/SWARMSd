@@ -1,0 +1,36 @@
+#!/bin/sh
+#
+# Start/stop the SWARMS daemons
+#
+# This file is linked in the Beagleboards /etc/init.d folder
+# Also, it is linked from init.d, in etc/rc0.d for termination, rc3.d for startup, and rc5.d for normal os running 
+
+
+set -e
+
+case "$1" in
+  start) 
+        echo -n "Starting SWARMSd: " 
+        start-stop-daemon -S -b -n SWARMSd -a /home/root/alex/drivePy/launchDrivePy.sh
+        echo "done" 
+        ;; 
+  stop) 
+        echo -n "Stopping SWARMSd: " 
+	echo 0 > /sys/class/leds/beagleboard\:\:usr1/brightness
+ 	killall python
+	start-stop-daemon -K -n SWARMSd 
+        echo "done" 
+        ;; 
+  restart) 
+        $0 stop 
+        $0 start 
+        ;; 
+  *) 
+        echo "Usage: SWARMSInit { start | stop | restart }" >&2 
+        exit 1 
+        ;; 
+esac 
+ 
+exit 0
+
+
