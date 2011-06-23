@@ -1,0 +1,19 @@
+Welcome to the SWARMS beagle board angstrom distribution python-based RCDrive library for SWARMS
+
+The SWARMS protocol for USB controllers can be found at https://github.com/alist/OpenSWARMS, but is not necessary if you're one of the lucky people at the DFL <lab> who already have it implemented!
+
+This code set contains code for compilling a shared library, that connects to SWARMS using libUSB
+All the code is here, but you'll need to compile the lib with libMake.sh
+
+You'll also need python; pyDriveLink.py is the code which will set the following states on control:
+IP Address 192.168.1.100 port 7337 -- always need a way to remember, huh?
+
+The client code also exists, and can be found as pyClient.py in this root folder; notice that sending commands from client to server is trivial and requires only socket connections. These sockets are closed after the server replies to a command. 
+See socketDriveSpec.txt for the spec which is used to communicate with your beagleBoard server from the client.
+
+To get SWARMS to run at boot, the startup/SWARMSd file is referenced in boot directories... Use vim on SWARMSd to find out where for the angstrom distribution. 
+
+The password for SSH on the beagleBoard at the DFL <lab> is SWARMSbb
+
+LICENSE:
+This code is hereby licensed under the MIT License @ http://www.opensource.org/licenses/mit-license.php
